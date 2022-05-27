@@ -10,7 +10,7 @@ export default function AddTodo(props) {
       alert("Please fill out the input field before adding a todo.");
       return;
     }
-    event.preventDefault();
+
     const newTodo = {
       id: Math.round(Math.random() * 10000),
       title: input,
