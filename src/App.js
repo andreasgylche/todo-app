@@ -1,23 +1,46 @@
-import logo from './logo.svg';
-import './App.css';
+import { useEffect, useState } from "react";
+import AddTodo from "./components/AddTodo";
+import TodoList from "./components/TodoList";
 
 function App() {
+  const [todos, setTodos] = useState([]);
+
+  useEffect(() => {
+    const pendingTodos = todos.filter(
+      (todo) => todo.completed === false
+    ).length;
+
+    document.title = `You have ${pendingTodos} pending tasks`;
+  }, [todos]);
+
+  const addTodo = (todo) => {
+    setTodos([todo, ...todos]);
+  };
+
+  const deleteTodo = (id) => {
+    setTodos([...todos].filter((todo) => todo.id !== id));
+  };
+
+  const updateTodo = (id) => {
+    const updatedTodos = todos.map((todo) => {
+      if (todo.id === id) {
+        todo.completed = !todo.completed;
+      }
+      return todo;
+    });
+    setTodos(updatedTodos);
+  };
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <div className="todo-container">
+        <AddTodo addTodo={addTodo} />
+        <TodoList
+          todos={todos}
+          deleteTodo={deleteTodo}
+          updateTodo={updateTodo}
+        />
+      </div>
     </div>
   );
 }

@@ -1,0 +1,82 @@
+@import "./modules/reset";
+@import "./modules/typography";
+
+body {
+  font-family: $font-stack;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  display: flex;
+  justify-content: center;
+  background-color: #f2e9de;
+  color: #0f1108;
+  font-weight: 500;
+  font-size: 16px;
+}
+
+* {
+  user-select: none;
+}
+
+// App Styling
+.todo-container {
+  width: 500px;
+  margin-top: 100px;
+}
+
+.todo-form {
+  display: flex;
+  gap: 1rem;
+  justify-content: space-between;
+}
+
+input {
+  flex: 1;
+  padding: 0.5rem;
+  background: none;
+  border: none;
+  outline: none;
+  border-bottom: 2px solid #0f1108;
+
+  &:focus,
+  &:focus-visible,
+  &:focus-within {
+    background: none;
+    border: none;
+    outline: none;
+    border-bottom: 2px solid #0f1108;
+  }
+}
+
+button {
+  cursor: pointer;
+  padding: 0.5rem;
+  background-color: #0f1108;
+  border-radius: 4px;
+  border: 1px solid #0f1108;
+  color: white;
+}
+
+.todo-list {
+  list-style-type: none;
+  margin-top: 50px;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+
+  .task {
+    display: flex;
+    justify-content: space-between;
+    cursor: pointer;
+
+    &:hover {
+      transform: translateX(2px);
+    }
+  }
+
+  .completed {
+    text-decoration: line-through;
+    text-decoration-thickness: 2px;
+  }
+}
