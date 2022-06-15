@@ -1,6 +1,9 @@
 @import "./modules/reset";
 @import "./modules/typography";
 
+$clr-bg: #f2e9de;
+$clr-text: #111111;
+
 body {
   font-family: $font-stack;
   -webkit-font-smoothing: antialiased;
@@ -8,8 +11,8 @@ body {
 
   display: flex;
   justify-content: center;
-  background-color: #f2e9de;
-  color: #0f1108;
+  background-color: $clr-bg;
+  color: $clr-text;
   font-weight: 500;
   font-size: 16px;
 }
@@ -36,7 +39,8 @@ input {
   background: none;
   border: none;
   outline: none;
-  border-bottom: 2px solid #0f1108;
+  border-bottom: 2px solid $clr-text;
+  color: $clr-text;
 
   &:focus,
   &:focus-visible,
@@ -44,17 +48,20 @@ input {
     background: none;
     border: none;
     outline: none;
-    border-bottom: 2px solid #0f1108;
+    border-bottom: 2px solid $clr-text;
+  }
+  &::placeholder {
+    color: rgba($clr-text, 0.5);
   }
 }
 
 button {
   cursor: pointer;
   padding: 0.5rem;
-  background-color: #0f1108;
+  background-color: $clr-text;
   border-radius: 4px;
-  border: 1px solid #0f1108;
-  color: white;
+  border: 1px solid $clr-text;
+  color: $clr-bg;
 }
 
 .todo-list {
