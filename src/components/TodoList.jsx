@@ -1,5 +1,6 @@
 import React from "react";
 import { FaTrash } from "react-icons/fa";
+import { motion } from "framer-motion";
 
 export default function TodoList(props) {
   if (!props.todos.length > 0) {
@@ -13,7 +14,14 @@ export default function TodoList(props) {
   return (
     <ul className="todo-list">
       {props.todos.map((todo) => (
-        <li key={todo.id} className="task">
+        <motion.li
+          key={todo.id}
+          className="task"
+          layout
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.2 }}
+        >
           <span
             className={todo.completed ? "completed" : null}
             onDoubleClick={() => props.updateTodo(todo.id)}
@@ -21,7 +29,7 @@ export default function TodoList(props) {
             {todo.title}
           </span>
           <FaTrash onClick={() => props.deleteTodo(todo.id)} />
-        </li>
+        </motion.li>
       ))}
     </ul>
   );
